@@ -1,8 +1,8 @@
-# 📘 API Documentation
+#  API Documentation
 
 This repository contains the REST API for a simple blog-like system. It includes user authentication, post creation, update/delete, and commenting functionality. This API is tested using **Postman**.
 
-## 🚀 Technologies Used
+##  Technologies Used
 
 - Node.js
 - Express.js
@@ -10,7 +10,7 @@ This repository contains the REST API for a simple blog-like system. It includes
 - JWT for Authentication
 - Postman for API testing
 
-## 📦 Installation
+##  Installation
 
 1. **Clone the repository**  
    ```bash
@@ -40,7 +40,7 @@ All endpoints are prefixed with: http://localhost:5000/api
 
 ------------Authentication----------------------
 
-🔹 Register User
+ Register User
 URL: /auth/register
 
 Method: POST
@@ -52,8 +52,8 @@ Body:
   "email": "shyam@gmail.com",
   "password": "123456"
 }
-
-🔹 Login User
+-------
+ Login User
 URL: /auth/login
 
 Method: POST
@@ -66,7 +66,7 @@ Body:
 }
 
 -------------- Posts----------------------
-🔹 Create Post
+ Create Post
 
 URL: /posts
 
@@ -81,18 +81,18 @@ Body:
   "content": "Database",
   "tags": ["MongoDB", "MySql", "PostGreSql"]
 }
-
-🔹 Get All Posts
+------
+ Get All Posts
 URL: /posts?page=1&limit=10
 
 Method: GET
-
-🔹 Get Single Post
+------
+ Get Single Post
 URL: /posts/:id
 
 Method: GET
-
-🔹 Update Post
+-------
+ Update Post
 URL: /posts/:id
 
 Method: PUT
@@ -104,8 +104,8 @@ Body:
   "title": "Updated Title",
   "content": "Updated Content"
 }
-
-🔹 Delete Post
+-------
+ Delete Post
 URL: /posts/:id
 
 Method: DELETE
@@ -113,7 +113,7 @@ Method: DELETE
 Headers: Authorization: Bearer <your_token>
 
 ---------------- Comments----------------------
-🔹 Add Comment
+ Add Comment
 URL: /comments/:postId
 
 Method: POST
@@ -125,8 +125,8 @@ Body:
 {
   "text": "This is my Krishna comment"
 }
-
-🔹 List Comments
+-----
+ List Comments
 URL: /comments/:postId
 
 Method: GET
