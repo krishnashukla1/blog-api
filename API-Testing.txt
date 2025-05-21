@@ -1,0 +1,240 @@
+PS D:\O10 =\blog-api> npm install express mongoose bcryptjs jsonwebtoken dotenv cors
+
+PS D:\O10 =\blog-api> npm install --save-dev nodemon
+
+1]=================REGISTER USER================
+
+POST---->    http://localhost:5000/api/auth/register
+
+{
+  "name": "Krishna",
+  "email": "krishna@gmail.com",
+  "password": "123456"
+}
+
+{
+    "msg": "User registered"
+}
+
+2] ===============================LOGIN USER============
+POST--->  http://localhost:5000/api/auth/login
+
+{
+  "email": "krishna@gmail.com",
+  "password": "123456"
+}
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODJkODIxY2E5NmQwNjI1NWM5OGE0YzgiLCJpYXQiOjE3NDc4MTMwNTF9.WQIxidiE-NlvGlXGawLOtMRN42j7NU62EialUqKk578"
+}
+
+3]=====================CREATE POST ====================
+POST--->  http://localhost:5000/api/posts
+
+{
+  "title": "My First Post",
+  "content": "This is the content of the post",
+  "tags": ["node", "express"]
+}
+
+HEADER-->  Authorization   Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODJkODIxY2E5NmQwNjI1NWM5OGE0YzgiLCJpYXQiOjE3NDc4MTMwNTF9.WQIxidiE-NlvGlXGawLOtMRN42j7NU62EialUqKk578
+--
+{
+    "title": "My First Post",
+    "content": "This is the content of the post",
+    "tags": [
+        "node",
+        "express"
+    ],
+    "authorId": "682d821ca96d06255c98a4c8",
+    "_id": "682d8391a96d06255c98a4cb",
+    "createdAt": "2025-05-21T07:41:05.172Z",
+    "updatedAt": "2025-05-21T07:41:05.172Z",
+    "__v": 0
+}
+
+4] ===============GET ALL POSTS====================
+GET--->  http://localhost:5000/api/posts?page=1&limit=10
+
+[
+    {
+        "_id": "682d8391a96d06255c98a4cb",
+        "title": "My First Post",
+        "content": "This is the content of the post",
+        "tags": [
+            "node",
+            "express"
+        ],
+        "authorId": "682d821ca96d06255c98a4c8",
+        "createdAt": "2025-05-21T07:41:05.172Z",
+        "updatedAt": "2025-05-21T07:41:05.172Z",
+        "__v": 0
+    }
+]
+
+5]==============GET SINGLE POST=================
+GET--->   http://localhost:5000/api/posts/<POST_ID> 
+          http://localhost:5000/api/posts/682d8391a96d06255c98a4cb
+
+{
+    "_id": "682d8391a96d06255c98a4cb",
+    "title": "My First Post",
+    "content": "This is the content of the post",
+    "tags": [
+        "node",
+        "express"
+    ],
+    "authorId": "682d821ca96d06255c98a4c8",
+    "createdAt": "2025-05-21T07:41:05.172Z",
+    "updatedAt": "2025-05-21T07:41:05.172Z",
+    "__v": 0
+}
+
+6]=================UPDATE POST================
+PUT---> http://localhost:5000/api/posts/<POST_ID>
+        http://localhost:5000/api/posts/682d8391a96d06255c98a4cb
+
+{
+  "title": "Updated Title",
+  "content": "Updated Content"
+}
+HEADER-->  Authorization   Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODJkODIxY2E5NmQwNjI1NWM5OGE0YzgiLCJpYXQiOjE3NDc4MTMwNTF9.WQIxidiE-NlvGlXGawLOtMRN42j7NU62EialUqKk578
+
+{
+    "_id": "682d8391a96d06255c98a4cb",
+    "title": "Updated Title",
+    "content": "Updated Content",
+    "tags": [
+        "node",
+        "express"
+    ],
+    "authorId": "682d821ca96d06255c98a4c8",
+    "createdAt": "2025-05-21T07:41:05.172Z",
+    "updatedAt": "2025-05-21T07:47:32.831Z",
+    "__v": 0
+}
+7] =====================DELETE POST =================
+
+DELETE----> http://localhost:5000/api/posts/682d8391a96d06255c98a4cb
+
+HEADER-->  Authorization   Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODJkODIxY2E5NmQwNjI1NWM5OGE0YzgiLCJpYXQiOjE3NDc4MTMwNTF9.WQIxidiE-NlvGlXGawLOtMRN42j7NU62EialUqKk578
+
+
+8]  ====================ADD COMMENT===================
+
+POST----> http://localhost:5000/api/comments/682d8391a96d06255c98a4cb
+
+{
+  "text": "This is my comment"
+}
+
+HEADER-->  Authorization   Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODJkODIxY2E5NmQwNjI1NWM5OGE0YzgiLCJpYXQiOjE3NDc4MTMwNTF9.WQIxidiE-NlvGlXGawLOtMRN42j7NU62EialUqKk578
+
+{
+    "text": "This is my comment",
+    "postId": "682d8391a96d06255c98a4cb",
+    "authorId": "682d821ca96d06255c98a4c8",
+    "_id": "682d8711a96d06255c98a4d1",
+    "createdAt": "2025-05-21T07:56:01.159Z",
+    "updatedAt": "2025-05-21T07:56:01.159Z",
+    "__v": 0
+}
+9] =================LIST COMMENT=================
+
+GET----> http://localhost:5000/api/comments/682d8391a96d06255c98a4cb
+
+HEADER-->  Authorization   Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODJkODIxY2E5NmQwNjI1NWM5OGE0YzgiLCJpYXQiOjE3NDc4MTMwNTF9.WQIxidiE-NlvGlXGawLOtMRN42j7NU62EialUqKk578
+
+[
+    {
+        "_id": "682d8711a96d06255c98a4d1",
+        "text": "This is my comment",
+        "postId": "682d8391a96d06255c98a4cb",
+        "authorId": "682d821ca96d06255c98a4c8",
+        "createdAt": "2025-05-21T07:56:01.159Z",
+        "updatedAt": "2025-05-21T07:56:01.159Z",
+        "__v": 0
+    }
+]
+
+10]================DELETE COMMENT 
+
+DELETE---------> http://localhost:5000/api/comments/<COMMENT_ID>  
+                 http://localhost:5000/api/comments/682d8711a96d06255c98a4d1
+
+HEADER-->  Authorization   Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODJkODIxY2E5NmQwNjI1NWM5OGE0YzgiLCJpYXQiOjE3NDc4MTMwNTF9.WQIxidiE-NlvGlXGawLOtMRN42j7NU62EialUqKk578
+
+11] ============SEARCH POSTS==================
+ Search Posts by Keyword
+GOAL: Allow users to search posts by title or content.
+
+
+GET---->  http://localhost:5000/api/posts/search/posts?keyword=blog
+
+http://localhost:5000/api/posts/search/posts?keyword=content
+http://localhost:5000/api/posts/search/posts?keyword=title
+
+Authorization    Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODJkODIxY2E5NmQwNjI1NWM5OGE0YzgiLCJpYXQiOjE3NDc4MTMwNTF9.WQIxidiE-NlvGlXGawLOtMRN42j7NU62EialUqKk578
+
+[
+    {
+        "_id": "682d8391a96d06255c98a4cb",
+        "title": "Updated Title",
+        "content": "Updated Content",
+        "tags": [
+            "node",
+            "express"
+        ],
+        "authorId": "682d821ca96d06255c98a4c8",
+        "createdAt": "2025-05-21T07:41:05.172Z",
+        "updatedAt": "2025-05-21T07:47:32.831Z",
+        "__v": 0
+    }
+]
+
+12] ============SEARCH TAG====================
+
+Filter Posts by Tags
+GOaL: Show only posts with a specific tag.
+
+
+GET ---->   http://localhost:5000/api/posts/filter/posts?tag=node
+
+Authorization     Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODJkODIxY2E5NmQwNjI1NWM5OGE0YzgiLCJpYXQiOjE3NDc4MTMwNTF9.WQIxidiE-NlvGlXGawLOtMRN42j7NU62EialUqKk578
+
+[
+    {
+        "_id": "682d8391a96d06255c98a4cb",
+        "title": "Updated Title",
+        "content": "Updated Content",
+        "tags": [
+            "node",
+            "express"
+        ],
+        "authorId": "682d821ca96d06255c98a4c8",
+        "createdAt": "2025-05-21T07:41:05.172Z",
+        "updatedAt": "2025-05-21T07:47:32.831Z",
+        "__v": 0
+    }
+]
+
+13]=========== Add Rate Limiting======================
+
+GOAL: Prevent abuse by limiting how many times a user can hit the API.
+
+How to do it:
+
+Install the package:  npm install express-rate-limit
+
+Add it in server.js file:
+
+const rateLimit = require("express-rate-limit");
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: "Too many requests from this IP, please try again later."
+});
+
+app.use(limiter);
+==============================================
